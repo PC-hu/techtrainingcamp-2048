@@ -9233,6 +9233,11 @@ react-scripts@3.4.3:
   optionalDependencies:
     fsevents "2.1.2"
 
+react-use-websocket@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.npm.taobao.org/react-use-websocket/download/react-use-websocket-2.2.0.tgz#3e9a6fc0a557d8ef4ad5266a721183e464c5a6ed"
+  integrity sha1-PppvwKVX2O9K1SZqchGD5GTFpu0=
+
 react@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"

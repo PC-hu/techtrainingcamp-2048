@@ -12,6 +12,7 @@ import { Direction } from '../types/Direction';
 import { getStoredData, setStoredData } from '../functions/localStorage';
 import { Animation } from '../types/Animations';
 import { defaultBoardSize, victoryTileValue } from '../config';
+import { RankItem } from '../types/RankItem';
 
 export interface StateType {
   /** Board size. Currently always 4. */
@@ -32,6 +33,9 @@ export interface StateType {
   /** Should the victory screen be hidden? */
   victoryDismissed: boolean;
 
+  /** single or multi player?*/
+  singleplayer: boolean;
+
   /** Current score. */
   score: number;
 
@@ -40,6 +44,18 @@ export interface StateType {
 
   /** Best score. */
   best: number;
+
+  /** data for rank */
+  rankdata: RankItem[];
+
+  /** run out of time? */
+  timeout: boolean;
+
+  /** when the game end */
+  endtime: number;
+
+  /** name of player */
+  playername: string;
 
   /** Used for certain animations. Mainly as a value of the "key" property. */
   moveId?: string;
@@ -59,9 +75,14 @@ function initializeState(): StateType {
     defeat: storedData.defeat || false,
     victory: false,
     victoryDismissed: storedData.victoryDismissed || false,
+    singleplayer: true,
     score: storedData.score || 0,
     best: storedData.best || 0,
     moveId: new Date().getTime().toString(),
+    rankdata: [],
+    timeout: false,
+    endtime: 10,
+    playername: '',
   };
 }
 
@@ -84,6 +105,9 @@ function applicationState(state = initialState, action: ActionModel) {
         newState.previousBoard = undefined;
         newState.victory = false;
         newState.victoryDismissed = false;
+        newState.timeout = false;
+        newState.rankdata = [];
+        newState.endtime = 10;
       }
       break;
     case ActionType.MOVE:
@@ -117,6 +141,20 @@ function applicationState(state = initialState, action: ActionModel) {
     case ActionType.DISMISS:
       newState.victoryDismissed = true;
       break;
+    case ActionType.CHRMODE:
+      newState.singleplayer = action.value;
+      break;
+    case ActionType.TIMEOUT:
+      newState.timeout = true;
+      newState.endtime = 0;
+      break;
+    case ActionType.SETNAME:
+      newState.playername = action.value;
+      break;
+    case ActionType.SETRANK:
+      // alert(action.value);
+      newState.rankdata = JSON.parse(action.value);
+      break;
     default:
       return state;
   }
@@ -127,6 +165,10 @@ function applicationState(state = initialState, action: ActionModel) {
 
   newState.defeat = !movePossible(newState.board);
   newState.victory = !!newState.board.find(value => value === victoryTileValue);
+  if (!newState.singleplayer && newState.timeout) {
+    newState.victory = false;
+    newState.defeat = true;
+  }
   setStoredData(newState);
 
   return newState;

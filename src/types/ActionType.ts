@@ -3,4 +3,8 @@ export enum ActionType {
   MOVE = 'move',
   UNDO = 'undo',
   DISMISS = 'dismiss',
+  CHRMODE = 'chrmode',
+  TIMEOUT = 'timeout',
+  SETNAME = 'setname',
+  SETRANK = 'setrank',
 }

@@ -10,7 +10,6 @@ import { animationDuration } from '../config';
 import { moveAction } from '../actions';
 import BoardTile from './BoardTile';
 import Overlay from './Overlay';
-
 const Board: React.FC = () => {
   const dispatch = useDispatch();
   const board = useSelector((state: StateType) => state.board);
@@ -19,6 +18,9 @@ const Board: React.FC = () => {
   const startPointerLocation = useRef<Point>();
   const currentPointerLocation = useRef<Point>();
 
+  const singleplayer = useSelector((state: StateType) => state.singleplayer);
+
+  const playername = useSelector((state: StateType) => state.playername);
   const onMove = useCallback(
     (direction: Direction) => dispatch(moveAction(direction)),
     [dispatch]
@@ -152,7 +154,6 @@ const Board: React.FC = () => {
 
     lastBoard.current = [...board];
   }, [animations, board, setRenderedBoard, setRenderedAnimations]);
-
   return (
     <div
       className={`board board-${boardSize}`}

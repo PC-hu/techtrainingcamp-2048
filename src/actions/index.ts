@@ -27,3 +27,28 @@ export function dismissAction(): ActionModel {
     type: ActionType.DISMISS,
   };
 }
+
+export function modeAction(singleplayer = true): ActionModel {
+  return {
+    type: ActionType.CHRMODE,
+    value: singleplayer,
+  };
+}
+
+export function timeoutAction(): ActionModel {
+  return {
+    type: ActionType.TIMEOUT,
+  };
+}
+export function setnameAction(pname: string): ActionModel {
+  return {
+    type: ActionType.SETNAME,
+    value: pname,
+  };
+}
+export function setrankAction(data: string): ActionModel {
+  return {
+    type: ActionType.SETRANK,
+    value: String,
+  };
+}
