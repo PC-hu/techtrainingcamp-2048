@@ -9162,6 +9162,13 @@ react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-i
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-live2d@^1.0.31:
+  version "1.0.31"
+  resolved "https://registry.npm.taobao.org/react-live2d/download/react-live2d-1.0.31.tgz#b9412c5842503d8dd8e9b7913c6b64680c430cb1"
+  integrity sha1-uUEsWEJQPY3Y6beRPGtkaAxDDLE=
+  dependencies:
+    whatwg-fetch "^3.0.0"
+
 react-redux@^7.2.1:
   version "7.2.1"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.1.tgz#8dedf784901014db2feca1ab633864dee68ad985"

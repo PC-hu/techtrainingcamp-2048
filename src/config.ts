@@ -12,3 +12,5 @@ export const victoryTileValue = 2048;
 
 /** Grid gap (used for animations). */
 export const gridGap = '1rem';
+
+export const serverurl = 'ws://152.136.213.253:3001';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import GithubCorner from 'react-github-corner';
 import './App.scss';
@@ -13,9 +13,11 @@ import ModePicker from './components/ModePicker';
 import Rank from './components/Rank';
 import Timer from './components/timer';
 import NameInput from './components/NameInput';
+import ReactLive2d from 'react-live2d';
 const App: React.FC = () => {
   const singleplayer = useSelector((state: StateType) => state.singleplayer);
   const playername = useSelector((state: StateType) => state.playername);
+  const score = useSelector((state: StateType) => state.score);
   if (singleplayer || playername !== '') {
     return (
       <div
@@ -27,7 +29,7 @@ const App: React.FC = () => {
           } as any
         }
       >
-        <GithubCorner href="https://github.com/mat-sz/2048" />
+        <GithubCorner href="https://github.com/PC-hu/techtrainingcamp-2048" />
         <Rank />
         <Timer />
         <div className="page">
@@ -35,8 +37,12 @@ const App: React.FC = () => {
           <Board />
           <BoardSizePicker />
           <ModePicker />
-          <Info />
         </div>
+        <ReactLive2d
+          width={300}
+          height={500}
+          TouchBody={['加油加油', '你好菜啊', '欸好厉害']}
+        />
       </div>
     );
   } else {

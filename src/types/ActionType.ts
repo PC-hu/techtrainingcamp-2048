@@ -7,4 +7,5 @@ export enum ActionType {
   TIMEOUT = 'timeout',
   SETNAME = 'setname',
   SETRANK = 'setrank',
+  SETENDTIME = 'setend',
 }

@@ -153,7 +153,18 @@ function applicationState(state = initialState, action: ActionModel) {
       break;
     case ActionType.SETRANK:
       // alert(action.value);
-      newState.rankdata = JSON.parse(action.value);
+      let temp = JSON.parse(action.value);
+      newState.rankdata = [];
+      for (var i = 0; i < temp.length; i++) {
+        newState.rankdata.push({
+          pname: temp[i].name,
+          score: temp[i].score,
+          state: temp[i].status,
+        });
+      }
+      break;
+    case ActionType.SETENDTIME:
+      newState.endtime = action.value;
       break;
     default:
       return state;

@@ -49,6 +49,12 @@ export function setnameAction(pname: string): ActionModel {
 export function setrankAction(data: string): ActionModel {
   return {
     type: ActionType.SETRANK,
-    value: String,
+    value: data,
+  };
+}
+export function setendAction(data: Number): ActionModel {
+  return {
+    type: ActionType.SETENDTIME,
+    value: data,
   };
 }
