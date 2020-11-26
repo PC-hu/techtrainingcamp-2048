@@ -4,7 +4,7 @@ import GithubCorner from 'react-github-corner';
 import './App.scss';
 
 import { animationDuration, gridGap } from './config';
-import { StateType } from '../reducers';
+import { StateType } from './reducers';
 import Header from './components/Header';
 import Board from './components/Board';
 import Info from './components/Info';

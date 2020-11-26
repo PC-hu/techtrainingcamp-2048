@@ -31,7 +31,7 @@ const Rank: React.FC = () => {
     sendJsonMessage({ type: 'data', name: pname, score: score, status: stat });
   }, [readyState, score, victory, defeat, sendJsonMessage]);
   useEffect(() => {
-    if (lastJsonMessage === null) return;
+    if (lastJsonMessage === null || single) return;
     let type = JSON.parse(lastJsonMessage);
     if (type === 'rank') dispatch(setrankAction(lastJsonMessage));
   }, [dispatch, lastJsonMessage]);
