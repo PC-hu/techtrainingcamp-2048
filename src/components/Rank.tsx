@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StateType } from '../reducers';
-import useWebSocket, { ReadyState } from 'react-use-websocket';
-import { setrankAction } from '../actions/';
+import useWebSocket from 'react-use-websocket';
+import { setrankAction, setendAction } from '../actions/';
 import { serverurl } from '../config';
 const Rank: React.FC = () => {
   const dispatch = useDispatch();
@@ -14,36 +14,45 @@ const Rank: React.FC = () => {
     (state: StateType) => state.victory && !state.victoryDismissed
   );
   const pname = useSelector((state: StateType) => state.playername);
-  const [socketUrl, setSocketUrl] = useState(serverurl);
-  const {
-    sendMessage,
-    sendJsonMessage,
-    lastMessage,
-    lastJsonMessage,
-    readyState,
-  } = useWebSocket(socketUrl, { share: true });
-  useEffect(() => {
-    //alert(readyState);
+  const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(
+    serverurl
+  );
+  const sendstatus = useCallback(() => {
+    if (single) return;
     let stat: string = '游戏中';
     if (victory) stat = '胜利';
     if (defeat) stat = '失败';
-    alert(readyState);
     sendJsonMessage({ type: 'data', name: pname, score: score, status: stat });
-  }, [readyState, score, victory, defeat, sendJsonMessage]);
+  }, [score, victory, defeat]);
+  const receive = useCallback(() => {
+    let message = lastJsonMessage;
+    if (message !== null) {
+      if (message.type === 'rank') dispatch(setrankAction(lastJsonMessage));
+      else if (message.type === 'time')
+        dispatch(setendAction(message.duration));
+    }
+  }, [lastJsonMessage]);
   useEffect(() => {
-    if (lastJsonMessage === null || single) return;
-    let type = JSON.parse(lastJsonMessage);
-    if (type === 'rank') dispatch(setrankAction(lastJsonMessage));
-  }, [dispatch, lastJsonMessage]);
+    if (pname === '') return;
+    sendJsonMessage({ type: 'login', name: pname });
+  }, [pname]);
+  useEffect(() => {
+    sendstatus();
+  }, [sendstatus]);
+  useEffect(() => {
+    receive();
+  }, [receive]);
   if (!single) {
     return (
       <table className="ranktable">
         <caption className="rankhead">排行榜</caption>
         <tbody>
-          <th>排名</th>
-          <th>昵称</th>
-          <th>分数</th>
-          <th>状态</th>
+          <tr>
+            <th>排名</th>
+            <th>昵称</th>
+            <th>分数</th>
+            <th>状态</th>
+          </tr>
           {rankdata.map((RankItem, index) => (
             <tr className="item" key={index}>
               <td>{index}</td>

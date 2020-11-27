@@ -18,14 +18,10 @@ const Board: React.FC = () => {
   const startPointerLocation = useRef<Point>();
   const currentPointerLocation = useRef<Point>();
 
-  const singleplayer = useSelector((state: StateType) => state.singleplayer);
-
-  const playername = useSelector((state: StateType) => state.playername);
   const onMove = useCallback(
     (direction: Direction) => dispatch(moveAction(direction)),
     [dispatch]
   );
-
   const [renderedBoard, setRenderedBoard] = useState(board);
   const [renderedAnimations, setRenderedAnimations] = useState<Animation[]>([]);
   const lastBoard = useRef<BoardType>([...board]);

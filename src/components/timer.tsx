@@ -1,10 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { timeoutAction, setendAction } from '../actions';
+import { timeoutAction } from '../actions';
 import { StateType } from '../reducers';
-import useWebSocket, { ReadyState } from 'react-use-websocket';
-import { serverurl } from '../config';
-
 const Timer: React.FC = () => {
   const dispatch = useDispatch();
   const endTime = useSelector((state: StateType) => state.endtime);
@@ -13,15 +10,6 @@ const Timer: React.FC = () => {
 
   const [minute, setMinute] = useState(0);
   const [second, setSecond] = useState(0);
-  const [socketUrl, setSocketUrl] = useState(serverurl);
-  const { lastJsonMessage, readyState } = useWebSocket(socketUrl, {
-    share: true,
-  });
-  useEffect(() => {
-    if (lastJsonMessage === null) return;
-    let message = JSON.parse(lastJsonMessage);
-    if (message.type === 'time') dispatch(setendAction(message.duration));
-  }, [dispatch, lastJsonMessage]);
   useEffect(() => {
     if (single || pname === '') return;
     //let sys_second = (endTime - new Date().getTime())/1000;

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import GithubCorner from 'react-github-corner';
 import './App.scss';
@@ -7,7 +7,6 @@ import { animationDuration, gridGap } from './config';
 import { StateType } from './reducers';
 import Header from './components/Header';
 import Board from './components/Board';
-import Info from './components/Info';
 import BoardSizePicker from './components/BoardSizePicker';
 import ModePicker from './components/ModePicker';
 import Rank from './components/Rank';
@@ -17,7 +16,6 @@ import ReactLive2d from 'react-live2d';
 const App: React.FC = () => {
   const singleplayer = useSelector((state: StateType) => state.singleplayer);
   const playername = useSelector((state: StateType) => state.playername);
-  const score = useSelector((state: StateType) => state.score);
   if (singleplayer || playername !== '') {
     return (
       <div

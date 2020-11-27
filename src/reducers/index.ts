@@ -81,7 +81,7 @@ function initializeState(): StateType {
     moveId: new Date().getTime().toString(),
     rankdata: [],
     timeout: false,
-    endtime: 10,
+    endtime: 1000,
     playername: '',
   };
 }

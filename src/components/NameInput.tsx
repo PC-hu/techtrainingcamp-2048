@@ -1,10 +1,8 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setnameAction } from '../actions';
 import { StateType } from '../reducers';
-import useWebSocket, { ReadyState } from 'react-use-websocket';
-import { serverurl } from '../config';
 const NameInput: React.FC = () => {
   const dispatch = useDispatch();
   const singleplayer = useSelector((state: StateType) => state.singleplayer);
@@ -12,12 +10,7 @@ const NameInput: React.FC = () => {
   const [pname, setName] = useState('');
   const writename = useCallback(() => {
     dispatch(setnameAction(pname));
-    sendJsonMessage({ type: 'login', name: pname });
   }, [dispatch, pname]);
-  const [socketUrl, setSocketUrl] = useState(serverurl);
-  const { sendJsonMessage, readyState } = useWebSocket(socketUrl, {
-    share: true,
-  });
   if (!singleplayer && playername === '') {
     return (
       <div className="nameinput">
