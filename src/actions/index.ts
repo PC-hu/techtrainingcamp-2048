@@ -58,3 +58,10 @@ export function setendAction(data: Number): ActionModel {
     value: data,
   };
 }
+
+export function setDiffcultyLv(data: Number): ActionModel {
+  return {
+    type: ActionType.SETDIFFCULTYLV,
+    value: data,
+  };
+}
