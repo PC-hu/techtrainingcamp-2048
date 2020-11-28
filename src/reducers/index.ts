@@ -153,7 +153,7 @@ function applicationState(state = initialState, action: ActionModel) {
       break;
     case ActionType.SETRANK:
       // alert(action.value);
-      let temp = JSON.parse(action.value);
+      let temp = action.value;
       newState.rankdata = [];
       for (var i = 0; i < temp.length; i++) {
         newState.rankdata.push({
@@ -177,8 +177,10 @@ function applicationState(state = initialState, action: ActionModel) {
   newState.defeat = !movePossible(newState.board);
   newState.victory = !!newState.board.find(value => value === victoryTileValue);
   if (!newState.singleplayer && newState.timeout) {
-    newState.victory = false;
-    newState.defeat = true;
+    if (newState.rankdata.length > 0)
+      newState.victory = newState.rankdata[0].pname === newState.playername;
+    else newState.victory = false;
+    newState.defeat = !newState.victory;
   }
   setStoredData(newState);
 
