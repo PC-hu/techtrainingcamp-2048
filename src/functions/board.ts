@@ -37,6 +37,19 @@ function newTile(board: BoardType): NewTileResult {
   };
 }
 
+function newTileAni(board: BoardType, count: Number) {
+  const animations: Animation[] = [];
+  for(let i = 0; i < count; i++){
+    let result = newTile(board);
+    if (result.index) {
+      animations.push({
+        type: AnimationType.NEW,
+        index: result.index,
+      });
+    }
+  }
+}
+
 export interface BoardUpdate {
   board: BoardType;
   animations?: Animation[];
@@ -161,7 +174,8 @@ function rotateAnimations(
 
 export function updateBoard(
   board: BoardType,
-  direction: Direction
+  direction: Direction,
+  diffcultyLv = 1
 ): BoardUpdate {
   const boardSize = Math.sqrt(board.length);
 
@@ -234,15 +248,7 @@ export function updateBoard(
 
   // Generate a new tile on change.
   if (changed) {
-    const result = newTile(board);
-    board = result.board;
-
-    if (result.index !== undefined) {
-      animations.push({
-        type: AnimationType.NEW,
-        index: result.index,
-      });
-    }
+    newTileAni(board, diffcultyLv);
   }
 
   return { board, scoreIncrease, animations };

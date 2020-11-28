@@ -60,6 +60,9 @@ export interface StateType {
   /** Used for certain animations. Mainly as a value of the "key" property. */
   moveId?: string;
 
+  /** diffculty Level : new tiles number */
+  diffcultyLv: number;
+
   /** Animations after last update. */
   animations?: Animation[];
 }
@@ -83,6 +86,7 @@ function initializeState(): StateType {
     timeout: false,
     endtime: 1000,
     playername: '',
+    diffcultyLv: 1,
   };
 }
 
@@ -117,7 +121,7 @@ function applicationState(state = initialState, action: ActionModel) {
         }
 
         const direction = action.value as Direction;
-        const update = updateBoard(newState.board, direction);
+        const update = updateBoard(newState.board, direction, newState.diffcultyLv);
         newState.previousBoard = [...newState.board];
         newState.board = update.board;
         newState.score += update.scoreIncrease;
@@ -165,6 +169,9 @@ function applicationState(state = initialState, action: ActionModel) {
       break;
     case ActionType.SETENDTIME:
       newState.endtime = action.value;
+      break;
+    case ActionType.SETDIFFCULTYLV:
+      newState.diffcultyLv = action.value;
       break;
     default:
       return state;

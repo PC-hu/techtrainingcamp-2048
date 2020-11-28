@@ -8,4 +8,5 @@ export enum ActionType {
   SETNAME = 'setname',
   SETRANK = 'setrank',
   SETENDTIME = 'setend',
+  SETDIFFCULTYLV = 'setdiffcultylv',
 }
