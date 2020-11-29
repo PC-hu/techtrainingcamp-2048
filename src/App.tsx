@@ -12,6 +12,11 @@ import ModePicker from './components/ModePicker';
 import Rank from './components/Rank';
 import Timer from './components/timer';
 import NameInput from './components/NameInput';
+import { Widget } from 'react-chat-widget';
+
+import 'react-chat-widget/lib/styles.css';
+
+import Chat from './components/Chat';
 import ReactLive2d from 'react-live2d';
 const App: React.FC = () => {
   const singleplayer = useSelector((state: StateType) => state.singleplayer);
@@ -32,7 +37,9 @@ const App: React.FC = () => {
         <Timer />
         <div className="page">
           <Header />
-          <Board />
+          <div>
+            <Board />
+          </div>
           <BoardSizePicker />
           <ModePicker />
         </div>
@@ -41,6 +48,7 @@ const App: React.FC = () => {
           height={500}
           TouchBody={['加油加油', '你好菜啊', '欸好厉害']}
         />
+        <Chat />
       </div>
     );
   } else {

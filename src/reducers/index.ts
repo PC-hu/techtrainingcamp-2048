@@ -65,6 +65,9 @@ export interface StateType {
 
   /** Animations after last update. */
   animations?: Animation[];
+
+  // /** response  */
+  // response?:string;
 }
 
 const storedData = getStoredData();
@@ -121,7 +124,11 @@ function applicationState(state = initialState, action: ActionModel) {
         }
 
         const direction = action.value as Direction;
-        const update = updateBoard(newState.board, direction, newState.diffcultyLv);
+        const update = updateBoard(
+          newState.board,
+          direction,
+          newState.diffcultyLv
+        );
         newState.previousBoard = [...newState.board];
         newState.board = update.board;
         newState.score += update.scoreIncrease;
@@ -157,7 +164,7 @@ function applicationState(state = initialState, action: ActionModel) {
       break;
     case ActionType.SETRANK:
       // alert(action.value);
-      let temp = action.value;
+      let temp = action.value.data;
       newState.rankdata = [];
       for (var i = 0; i < temp.length; i++) {
         newState.rankdata.push({

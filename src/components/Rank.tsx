@@ -14,9 +14,11 @@ const Rank: React.FC = () => {
     (state: StateType) => state.victory && !state.victoryDismissed
   );
   const pname = useSelector((state: StateType) => state.playername);
-  const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(
-    serverurl
-  );
+  const {
+    sendJsonMessage,
+    lastJsonMessage,
+    readyState,
+  } = useWebSocket(serverurl, { share: true });
   const sendstatus = useCallback(() => {
     if (single) return;
     let stat: string = '游戏中';
@@ -55,7 +57,7 @@ const Rank: React.FC = () => {
           </tr>
           {rankdata.map((RankItem, index) => (
             <tr className="item" key={index}>
-              <td>{index}</td>
+              <td>{index + 1}</td>
               <td>{RankItem.pname}</td>
               <td>{RankItem.score}</td>
               <td>{RankItem.state}</td>
