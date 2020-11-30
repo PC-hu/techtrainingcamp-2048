@@ -123,6 +123,13 @@ button {
   flex-direction: column;
   justify-content: center;
 }
+.pkinfo {
+  margin: 50px;
+  height: 430px;
+}
+.rhead {
+  text-align: center;
+}
 .mode-picker {
   display: flex;
   margin: 0 -5px;
@@ -132,21 +139,21 @@ button {
     margin: 0 5px;
   }
 }
-.ranktable {
-  float: left;
+// .ranktable {
+//   float: left;
 
-  margin-top: 55px;
-  margin-left: 10px;
-  width: 300px;
-  height: 350px;
-  text-align: center;
-  .rankhead {
-    font-weight: 800;
-    font-size: 26px;
+//   margin-top: 55px;
+//   margin-left: 10px;
+//   width: 300px;
+//   height: 600px;
+//   text-align: center;
+//   .rankhead {
+//     font-weight: 800;
+//     font-size: 26px;
 
-    margin-bottom: 10px;
-  }
-}
+//     margin-bottom: 10px;
+//   }
+// }
 
 .count-down {
   display: flex;

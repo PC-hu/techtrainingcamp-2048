@@ -47,15 +47,18 @@ const App: React.FC = () => {
           </div>
           <div className="pkinfo">
             <Timer />
+            {!singleplayer ? <h2 className="rhead">排行榜</h2> : null}
             <Rank />
           </div>
         </div>
-        <ReactLive2d
-          width={250}
-          height={300}
-          bottom={'10px'}
-          TouchBody={['加油加油', '你好菜啊', '欸好厉害']}
-        />
+        {singleplayer ? (
+          <ReactLive2d
+            width={250}
+            height={300}
+            bottom={'10px'}
+            TouchBody={['加油加油', '你好菜啊', '欸好厉害']}
+          />
+        ) : null}
         <Chat />
       </div>
     );

@@ -5,6 +5,7 @@ import useWebSocket from 'react-use-websocket';
 import { setrankAction, setendAction } from '../actions/';
 import { serverurl } from '../config';
 import SmallBoard from './SmallBoard';
+import TableScrollbar from 'react-table-scrollbar';
 const Rank: React.FC = () => {
   const dispatch = useDispatch();
   const rankdata = useSelector((state: StateType) => state.rankdata);
@@ -54,29 +55,23 @@ const Rank: React.FC = () => {
   }, [receive]);
   if (!single) {
     return (
-      <table className="ranktable">
-        <caption className="rankhead">排行榜</caption>
-        <tbody>
-          {/* <tr>
-            <th>排名</th>
-            <th>昵称</th>
-            <th>分数</th>
-            <th>状态</th>
-            <th>棋盘</th>
-          </tr> */}
-          {rankdata.map((RankItem, index) => (
-            <tr className="item" key={index}>
-              <td>{index + 1}</td>
-              <td>{RankItem.pname}</td>
-              <td>{RankItem.score}</td>
-              <td>{RankItem.state}</td>
-              <td>
-                <SmallBoard board={RankItem.board} />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <TableScrollbar height="600px" width="100%">
+        <table>
+          <tbody>
+            {rankdata.map((RankItem, index) => (
+              <tr className="item" key={index}>
+                <td>{index + 1}</td>
+                <td>{RankItem.pname}</td>
+                <td>{RankItem.score}</td>
+                <td>{RankItem.state}</td>
+                <td>
+                  <SmallBoard board={RankItem.board} />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </TableScrollbar>
     );
   }
   return null;
