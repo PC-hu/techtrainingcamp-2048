@@ -29,7 +29,8 @@ const Board: React.FC = () => {
 
   useEffect(() => {
     const keydownListener = (e: KeyboardEvent) => {
-      if (e.target.name) return;
+      let name: any = (e.target as any).name;
+      if (name) return;
       else e.preventDefault();
       switch (e.key) {
         case 'ArrowDown':

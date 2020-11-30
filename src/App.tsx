@@ -7,13 +7,11 @@ import { animationDuration, gridGap } from './config';
 import { StateType } from './reducers';
 import Header from './components/Header';
 import Board from './components/Board';
-import SmallBoard from './components/SmallBoard';
 import BoardSizePicker from './components/BoardSizePicker';
 import ModePicker from './components/ModePicker';
 import Rank from './components/Rank';
 import Timer from './components/timer';
 import NameInput from './components/NameInput';
-import { Widget } from 'react-chat-widget';
 
 import 'react-chat-widget/lib/styles.css';
 
