@@ -30,6 +30,7 @@ const Board: React.FC = () => {
   useEffect(() => {
     const keydownListener = (e: KeyboardEvent) => {
       if (e.target.name) return;
+      else e.preventDefault();
       switch (e.key) {
         case 'ArrowDown':
           onMove(Direction.DOWN);

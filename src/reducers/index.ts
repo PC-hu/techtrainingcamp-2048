@@ -153,6 +153,9 @@ function applicationState(state = initialState, action: ActionModel) {
       newState.victoryDismissed = true;
       break;
     case ActionType.CHRMODE:
+      const update = initializeBoard(newState.boardSize);
+      newState.board = update.board;
+      newState.score = 0;
       newState.singleplayer = action.value;
       break;
     case ActionType.TIMEOUT:
@@ -171,6 +174,7 @@ function applicationState(state = initialState, action: ActionModel) {
           pname: temp[i].name,
           score: temp[i].score,
           state: temp[i].status,
+          board: temp[i].board,
         });
       }
       break;

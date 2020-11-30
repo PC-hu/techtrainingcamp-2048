@@ -7,6 +7,7 @@ import { animationDuration, gridGap } from './config';
 import { StateType } from './reducers';
 import Header from './components/Header';
 import Board from './components/Board';
+import SmallBoard from './components/SmallBoard';
 import BoardSizePicker from './components/BoardSizePicker';
 import ModePicker from './components/ModePicker';
 import Rank from './components/Rank';
@@ -33,19 +34,26 @@ const App: React.FC = () => {
         }
       >
         <GithubCorner href="https://github.com/PC-hu/techtrainingcamp-2048" />
-        <Rank />
-        <Timer />
+
         <div className="page">
-          <Header />
+          <div className="picker">
+            <BoardSizePicker />
+            <ModePicker />
+            {/* <SmallBoard/> */}
+          </div>
           <div>
+            <Header />
             <Board />
           </div>
-          <BoardSizePicker />
-          <ModePicker />
+          <div className="pkinfo">
+            <Timer />
+            <Rank />
+          </div>
         </div>
         <ReactLive2d
-          width={300}
-          height={500}
+          width={250}
+          height={300}
+          bottom={'10px'}
           TouchBody={['加油加油', '你好菜啊', '欸好厉害']}
         />
         <Chat />

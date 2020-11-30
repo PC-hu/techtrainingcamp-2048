@@ -7,10 +7,6 @@
 html {
   font-size: 16px;
 }
-.widget {
-  z-index: 999;
-}
-
 html,
 body {
   margin: 0;
@@ -45,16 +41,20 @@ button {
 }
 
 .page {
-  max-width: 600px;
-  margin: 0 auto;
+  // max-width: 900px;
+  max-height: 500px;
+  // margin: 0 0;
   padding: 0 20px;
   font-size: 1.1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .header {
-  padding: 2rem 0;
+  // padding: 0 0 2rem;
   font-size: 1.1rem;
-
+  width: 450px;
   &-row {
     display: flex;
     align-items: center;
@@ -117,6 +117,12 @@ button {
     margin: 0 5px;
   }
 }
+.picker,
+.pkinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .mode-picker {
   display: flex;
   margin: 0 -5px;
@@ -132,21 +138,20 @@ button {
   margin-top: 55px;
   margin-left: 10px;
   width: 300px;
+  height: 350px;
+  text-align: center;
   .rankhead {
     font-weight: 800;
     font-size: 26px;
-    text-align: center;
+
     margin-bottom: 10px;
   }
 }
 
 .count-down {
-  float: right;
-  margin-top: 50px;
-  margin-right: 140px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   border-radius: 6px;
   font-size: xx-large;
   .red {
@@ -155,7 +160,8 @@ button {
   }
 }
 
-.board {
+.board,
+.smallboard {
   position: relative;
   background: #bbada0;
   border-radius: 6px;
@@ -165,6 +171,8 @@ button {
   padding: var(--grid-gap);
   user-select: none;
   touch-action: none;
+  width: 450px;
+  height: 450px;
 
   &-tile {
     position: relative;
@@ -264,7 +272,26 @@ button {
     }
   }
 }
-
+.smallboard {
+  width: 100px;
+  height: 100px;
+  &.board-3 {
+    .board-tile {
+      font-size: 0.8rem;
+    }
+  }
+  &.board-4 {
+    .board-tile {
+      font-size: 0.6rem;
+    }
+  }
+  &.board-5,
+  &.board-6 {
+    .board-tile {
+      font-size: 0.4em;
+    }
+  }
+}
 .nameinput {
   position: absolute;
   top: 0;
@@ -324,7 +351,6 @@ button {
     margin-bottom: 0.5em;
   }
 }
-
 @keyframes reveal {
   0% {
     opacity: 0;

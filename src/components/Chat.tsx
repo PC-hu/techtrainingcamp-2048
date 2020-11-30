@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { StateType } from '../reducers';
 const Chat: React.FC = () => {
   const pname = useSelector((state: StateType) => state.playername);
-
+  const single = useSelector((state: StateType) => state.singleplayer);
   const { sendJsonMessage, lastJsonMessage } = useWebSocket(serverurl, {
     share: true,
   });
@@ -24,17 +24,18 @@ const Chat: React.FC = () => {
     sendJsonMessage({ type: 'letschat', name: pname, str: newMessage });
     // Now send the message throught the backend API
   };
-
-  return (
-    <div className="App">
-      <Widget
-        handleNewUserMessage={handleNewUserMessage}
-        profileAvatar={logo}
-        title="对战聊天室"
-        subtitle=""
-      />
-    </div>
-  );
+  if (!single) {
+    return (
+      <div className="App">
+        <Widget
+          handleNewUserMessage={handleNewUserMessage}
+          profileAvatar={logo}
+          title="对战聊天室"
+          subtitle=""
+        />
+      </div>
+    );
+  } else return null;
 };
 
 export default Chat;
