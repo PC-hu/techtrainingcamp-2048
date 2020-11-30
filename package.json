@@ -25,7 +25,6 @@
     "react-redux": "^7.2.1",
     "react-scripts": "3.4.3",
     "react-table-scrollbar": "^0.1.9",
-    "react-tiny-virtual-list": "^2.2.0",
     "react-use-websocket": "^2.2.0",
     "redux": "^4.0.5",
     "typescript": "^3.9.5"
