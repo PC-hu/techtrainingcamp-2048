@@ -3,8 +3,11 @@ import { useSelector } from 'react-redux';
 
 import { StateType } from '../reducers';
 import BoardTile from './BoardTile';
-const SmallBoard: React.FC = props => {
-  const { board } = props;
+import { BoardType } from '../functions/board';
+interface Para {
+  board: BoardType;
+}
+const SmallBoard: React.FC<Para> = ({ board }) => {
   const boardSize = useSelector((state: StateType) => state.boardSize);
   const [renderedBoard, setRenderedBoard] = useState(board);
 
@@ -16,7 +19,7 @@ const SmallBoard: React.FC = props => {
       className={`smallboard board-${boardSize}`}
       style={{ '--board-size': boardSize } as any}
     >
-      {renderedBoard.map((value, i) => (
+      {renderedBoard.map((value: number, i: number) => (
         <BoardTile value={value} key={i} />
       ))}
     </div>
