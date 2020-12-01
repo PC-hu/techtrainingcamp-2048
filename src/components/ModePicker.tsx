@@ -25,9 +25,6 @@ const ModePicker: React.FC = () => {
   const stop_auto_move = function(){
     auto_move_flag = false;
   };
-  const handleChange = function(event){
-    auto_move_time = event.target.value
-  }
   return (
     <div>
       <h2>Play Mode</h2>

@@ -4,6 +4,8 @@
 
 <img alt="workflow" src="https://img.shields.io/github/workflow/status/mat-sz/react-letter/Node.js%20CI%20(yarn)">
 
+试玩地址：[2048](http://techtraining2048.hopto.org)
+
 This is a reimplementation of Gabriele Cirulli's excellent [2048](https://play2048.co) game, built with React, Redux
 and TypeScript. Unlike other React-based implementations, only functional components (with hooks) are used here. This project doesn't rely on canvas or element refs. This project was bootstrapped using the [mat-sz](https://github.com/mat-sz/cra-template-mat-sz) CRA template.
 
@@ -23,3 +25,7 @@ Several unit tests for game logic are available. You can run the test suite usin
 ```
 yarn test
 ```
+
+## 新增多人游戏等功能
+
+需要在src/config.ts中修改serverurl为后端服务器的地址
