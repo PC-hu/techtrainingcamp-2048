@@ -65,3 +65,9 @@ export function setDiffcultyLv(data: Number): ActionModel {
     value: data,
   };
 }
+export function setAutoMovetime(data: Number): ActionModel {
+  return {
+    type: ActionType.SETAUTOMOVETIME,
+    value: data,
+  };
+}

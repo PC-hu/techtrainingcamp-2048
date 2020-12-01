@@ -9,4 +9,5 @@ export enum ActionType {
   SETRANK = 'setrank',
   SETENDTIME = 'setend',
   SETDIFFCULTYLV = 'setdiffcultylv',
+  SETAUTOMOVETIME = 'setautomovetime',
 }

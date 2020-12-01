@@ -63,6 +63,9 @@ export interface StateType {
   /** diffculty Level : new tiles number */
   diffcultyLv: number;
 
+  /** auto move time : xxx ms */
+  automovetime: number;
+
   /** Animations after last update. */
   animations?: Animation[];
 
@@ -90,6 +93,7 @@ function initializeState(): StateType {
     endtime: 1000,
     playername: '',
     diffcultyLv: 1,
+    automovetime: 300,
   };
 }
 
@@ -183,6 +187,9 @@ function applicationState(state = initialState, action: ActionModel) {
       break;
     case ActionType.SETDIFFCULTYLV:
       newState.diffcultyLv = action.value;
+      break;
+    case ActionType.SETAUTOMOVETIME:
+      newState.automovetime = action.value;
       break;
     default:
       return state;

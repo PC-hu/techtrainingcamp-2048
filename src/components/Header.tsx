@@ -14,10 +14,12 @@ const Header: React.FC = () => {
   const best = useSelector((state: StateType) => state.best);
   const previousBoard = useSelector((state: StateType) => state.previousBoard);
   const pname = useSelector((state: StateType) => state.playername);
+  let diffcultyLv = useSelector((state: StateType) => state.diffcultyLv);
   return (
     <div className="header">
       <div className="header-row">
         <h1>2048</h1>
+        <h2>Lv{diffcultyLv}</h2>
         <div className="header-scores">
           <div className="header-scores-score">
             <div>Score</div>
