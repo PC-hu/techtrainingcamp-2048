@@ -47,11 +47,11 @@ const ModePicker: React.FC = () => {
 
       <h2>Auto move!!</h2>
       <div className="mode-picker">
-        <strong>Move randomly with </strong>
+        <strong className="auto-move-text">Move randomly with </strong>
         <input type='number' className="auto-move-input" name="auto-move-time" value={auto_move_time} 
           onChange={(e)=> dispatch(setAutoMovetime(Number(e.target.value)))} id="auto-move-input-time" >
         </input>
-        <strong> ms.</strong>
+        <strong className="auto-move-text"> ms.</strong>
         <button onClick={() => {start_auto_move()} }>Run</button>
         <button onClick={() => {stop_auto_move()} }>Stop</button>
       </div>
