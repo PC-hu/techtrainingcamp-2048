@@ -29,3 +29,4 @@ yarn test
 ## 新增多人游戏等功能
 
 需要在src/config.ts中修改serverurl为后端服务器的地址
+后端代码仓库：[techtrainingcamp-frontend-4-server](https://github.com/PC-hu/techtrainingcamp-frontend-4-server)
